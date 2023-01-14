@@ -298,21 +298,3 @@ post:[//载入进度，可以填多个就是随机显示
 ```
 这里也提供了一个开发模式，可以将developMode设为true，在内置浏览器打开时，就会加载userinfo1、eventSetting2中的数据（需要自己配置），而不会从接口调用。
 
-
-
-1.In a terminal, run the following command:
-```
-yarn create strapi-app your-project-name
-```
-2.Choose `Custom` installation type, which allows to choose your preferred database
-```
-Custom (manual settings), which allows to choose your preferred database
-```
-3.Among the list of databases, choose a database for your Project.Name your project's database.
-4.run the following command in the project folder
-```
-yarn develop
-```
-
-
-## 二次开发介绍
