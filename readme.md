@@ -9,10 +9,14 @@
 > Ask for help: WeChat official account “造件师”
 
 > Design idea: during the Spring Festival, various well-known platforms are giving benefits to users, developing a group of users' WeChat groups, and laying a foundation for the number of users for our future community operation, for this reason, we have prepared a batch of gifts that are convenient to collect online. When users join the WeChat group, the administrator will issue red envelopes regularly, and the users with the best luck can get additional gifts.
-> 
-> 而微信群能够扫码加入的人数有限，一个群加满以后需要动态更换新的空群二维码，而且扫码加群的人数到达上线后，需要有机制鼓励群成员邀请其它朋友入群。此应用便是为此而生。
 
-> 应用设计了10秒随机载入动画，烘托春节氛围，之后用简单的文字描述了福利内容，展示群二维码供用户加群。至此，建群目的达到。 加群后，还有更丰富的玩法，例如，通过管理员引导，用户回到应用页面确认自己加入的群号，系统自动根据用户生肖计算每个群中的属兔的用户数量，定时快照并排名，每日指定时间排名前列的群可以加入“兔圈”，获得额外的丰厚礼品，还可以投票修改群名、修改榜单中的群头像、以此让加入同一群的用户“共同做某事”，促进社群凝聚力和活跃度，力争在活动结束后也能成为八卦群、爆料群、互助群...
+> However, the number of people who can join the WeChat group by scanning the QR code is limited. When a group is full, a new QR code needs to be dynamically changed. After the number of people who can scan the QR code to join the group reaches the upper limit, a mechanism is needed to encourage group members to invite their friends to join the group. This application is designed to implement this mechanism.
+
+> The application designed a 10-second random loading animation to set off the atmosphere of the Spring Festival. After that, the welfare content was described in simple words, and the WeChat group QR code was displayed for users to scan and add groups. So far, the purpose of this application to build more WeChat groups has been achieved.
+
+> After joining the group, there are more rich ways to play. For example, under the guidance of the administrator, users return to the application page to confirm their group number. The system automatically calculates the number of users whose zodiac signs are rabbits in each group according to the user's zodiac signs, and regularly snaps and ranks them. The groups that rank the top at the specified time each day can join the "rabbit circle" to get extra rich gifts.
+
+> Users who join the group can also vote to modify the group name, modify the group avatar in the ranking list, so that users who join the same group can "do something together", promote the cohesion and activity of the community, and strive to become gossip groups, explosive groups, mutual aid groups after the event is over...
 
 > 在此也特别感谢Strapi社区的[Richard Nsama](https://github.com/kasonde)，在我学习Koa的过程中提供很大帮助。
 
