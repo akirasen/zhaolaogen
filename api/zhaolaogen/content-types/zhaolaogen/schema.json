@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "zhaolaogens",
+  "info": {
+    "singularName": "zhaolaogen",
+    "pluralName": "zhaolaogens",
+    "displayName": "zhaolaogen",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "weChatGroupName": {
+      "type": "string"
+    },
+    "weChatGroupQR": {
+      "type": "string"
+    },
+    "weChatGroupAdminQR": {
+      "type": "string"
+    },
+    "zhaolaogen_users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::zhaolaogenuser.zhaolaogenuser",
+      "mappedBy": "zhaolaogen"
+    },
+    "rabbitConut": {
+      "type": "integer",
+      "default": 0
+    },
+    "userCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "rank": {
+      "type": "integer",
+      "default": 0
+    },
+    "joinedCircle": {
+      "type": "boolean",
+      "default": false
+    },
+    "joinCircleDate": {
+      "type": "datetime"
+    },
+    "groupAvator": {
+      "type": "string"
+    },
+    "creater": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

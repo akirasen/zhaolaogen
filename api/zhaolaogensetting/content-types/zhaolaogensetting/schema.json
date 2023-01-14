@@ -1,0 +1,86 @@
+{
+  "kind": "singleType",
+  "collectionName": "zhaolaogensettings",
+  "info": {
+    "singularName": "zhaolaogensetting",
+    "pluralName": "zhaolaogensettings",
+    "displayName": "zhaolaogenSetting",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bgImg": {
+      "type": "string"
+    },
+    "adminQR": {
+      "type": "string"
+    },
+    "zodiac": {
+      "type": "string"
+    },
+    "totalUser": {
+      "type": "biginteger"
+    },
+    "totalUsed": {
+      "type": "biginteger"
+    },
+    "totalClick": {
+      "type": "biginteger"
+    },
+    "currentGroup": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::zhaolaogen.zhaolaogen"
+    },
+    "topImg": {
+      "type": "string"
+    },
+    "bottomImg": {
+      "type": "string"
+    },
+    "post": {
+      "type": "json"
+    },
+    "topNumJoincircle": {
+      "type": "integer"
+    },
+    "groupInCircle": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::zhaolaogen.zhaolaogen"
+    },
+    "miniGroupCount": {
+      "type": "integer"
+    },
+    "giftMoment": {
+      "type": "string"
+    },
+    "groupInCircleCount": {
+      "type": "integer"
+    },
+    "exampleImg": {
+      "type": "string"
+    },
+    "groupAvator": {
+      "type": "json"
+    },
+    "normalPostImg": {
+      "type": "string"
+    },
+    "bgPostImg": {
+      "type": "string"
+    },
+    "currentAccessToken": {
+      "type": "string"
+    },
+    "accessTokenRefreshTime": {
+      "type": "datetime"
+    },
+    "currentJsapiTicket": {
+      "type": "string"
+    }
+  }
+}

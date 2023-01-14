@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "zlglogs",
+  "info": {
+    "singularName": "zlglog",
+    "pluralName": "zlglogs",
+    "displayName": "zlgLog"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dealer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "api": {
+      "type": "string"
+    },
+    "params": {
+      "type": "string"
+    },
+    "body": {
+      "type": "json"
+    }
+  }
+}

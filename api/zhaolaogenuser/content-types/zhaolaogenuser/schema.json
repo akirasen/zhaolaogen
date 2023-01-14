@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "zhaolaogenusers",
+  "info": {
+    "singularName": "zhaolaogenuser",
+    "pluralName": "zhaolaogenusers",
+    "displayName": "zhaolaogenusers",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "uid": {
+      "type": "string"
+    },
+    "nickname": {
+      "type": "string"
+    },
+    "img": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "zhaolaogen": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::zhaolaogen.zhaolaogen",
+      "inversedBy": "zhaolaogen_users"
+    },
+    "zodiac": {
+      "type": "string"
+    },
+    "birthplace": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "integer"
+    },
+    "salutation": {
+      "type": "string"
+    },
+    "currentCode": {
+      "type": "string"
+    },
+    "dealer": {
+      "type": "boolean",
+      "default": false
+    },
+    "identifier": {
+      "type": "string"
+    }
+  }
+}
