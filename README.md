@@ -204,7 +204,7 @@ yarn develop
 - 登录后，在content-manager中，选中zhaolaogensetting，设置应用运行参数。
 
 14.配置API访问权限
-在settings/users-permissions/roles中，选择Public配置公共API访问权限，在Permissions列表中，选择zhaolaogenuser，勾选以下API并保存：
+在`settings/users-permissions/roles`中，选择Public配置公共API访问权限，在`Permissions`列表中，选择`zhaolaogenuser`，勾选以下API并保存：
 ```
 chooseGroup
 getGroupName 
@@ -214,13 +214,15 @@ userInfoStore
 warningAdmin
 ```
 
-选择`users-permissions`，勾选`callback`并保存，其它所有未提到的API均取消勾选
+选择`users-permissions`，勾选`callback`并保存，其它所有未提到的API均取消勾选，保存。
 
 在`content-manager`中，选中`user`，点击`Edit the model`按钮，点击`Add another field`按钮，创建名为`name`的`Text`类型字段，再创建名为`LastWarningTime`的`datetime`类型`Date`字段，名为`phone`的`Text`类型字段，以及名为`qrcode`的`Text`类型字段，保存。
-在`content-manager`中，选中`user`，点击`Create an entry`按钮，填入管理员登录信息。
 
+在`settings/users-permissions/roles`中，点击`Add new role`按钮，新建名为`zlgOper`的角色，在`Permissions`列表中，选择`zhaolaogenuser`，勾选除`delete`以外的所有API并保存，选择`users-permissions`，勾选`me`并保存，其它所有未提到的API均取消勾选，保存。
 
-13.公共API列表
+在`content-manager`中，选中`user`，点击`Create an entry`按钮，填入管理员登录信息。其中`confirmed`选择`true`，`role`选择为`zlgOper`，qrcode填写管理员的微信二维码链接地址。
+
+15.公共API列表
 配置成功后，用户可以在未登录授权的情况下可以POST正常使用以下API，使用koa2-ratelimit设置了每分钟5次的访问限制，提高恶意攻击的成本：
 ```
 /api/zhaolaogen/info
@@ -235,7 +237,7 @@ warningAdmin
 /api/auth/local
 ```
 
-14.授权访问API列表
+16.授权访问API列表
 管理员登录后，可以通过jwt授权使用以下接口：
 ```
 /api/zhaolaogen/start
