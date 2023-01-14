@@ -87,11 +87,11 @@ const aliTemplateCode = 'SMS_XXXXXXXX'
 - yarn
 - MySQL	5.7+
 
-## 后端安装
+## 二次开发指南
 
-### 在服务器终端中操作
+### 在服务器端操作
 
-1.`your-project-name`改为你准备新建的目录名
+1.终端操作，`your-project-name`改为你准备新建的目录名
 
 ```
 yarn create strapi-app your-project-name
@@ -118,6 +118,7 @@ npm i axios --save
 npm i moment --save
 npm i crypto-js --save
 npm i koa2-ratelimit --save
+yarn strapi install graphql
 ```
 7.创建config/cron-tasks.js文件：
 ```
@@ -157,7 +158,64 @@ module.exports = ({ env }) => ({
 
 ```
 9.将此开源项目的/api目录复制到你的服务器，与应用的src/api目录合并
-10.修改
+
+10.修改src/api/zhaolaogenuser/services/zhaolaogenuser.js文件中的参数：
+
+```
+let client_id = `XXXXXXXXXX`//配置client_id 
+let client_secret = `XXXXXXXXXX`//配置client_secret
+let redirect_uri = `https://XXXXXXXXXX.XXXXXXXXXX.cn`//配置redirect_uri
+//传入的用于敏感数据加密的秘钥
+let vkey = CryptoJS.enc.Utf8.parse('XXXXXXXXXX')
+//传入的用于敏感数据加密的秘钥偏移量
+let viv = CryptoJS.enc.Utf8.parse('XXXXXXXXXX')
+//传入的用于非敏感数据加密的秘钥
+let xkey = CryptoJS.enc.Utf8.parse('XXXXXXXXXX')
+//传入的用于非敏感数据加密的秘钥偏移量
+let xiv = CryptoJS.enc.Utf8.parse('XXXXXXXXXX')
+//公众号key
+const wxappid = "XXXXXXXXXX"
+const wxsecret = "XXXXXXXXXX"
+//阿里云短信接口密钥
+const aliAccessKeyId = 'XXXXXXXXXX'
+const aliAccessKeySecret = 'XXXXXXXXXX'
+const aliTemplateCode = 'XXXXXXXXXX'
+```
+
+11.后端参数配置完成，重新bulid，然后启动开发环境：
+
+```
+yarn build
+yarn develop
+```
+
+12.要使用域名访问API，还需要完成以下工作
+- 修改nginx配置文件，使用反向代理监听应用程序端口；
+- 若要在微信小程序中正常使用，需要使用SSL，并进行绑定业务域名等一系列配置
+
+13.公共API列表
+配置成功后，用户可以在未登录授权的情况下可以POST正常使用以下API，使用koa2-ratelimit设置了每分钟5次的访问限制，提高恶意攻击的成本：
+```
+/api/zhaolaogen/info
+/api/zhaolaogen/warning/:id
+/api/zhaolaogen/ticket
+/api/zhaolaogen/start
+/api/zhaolaogen/editGroup/:id
+/api/zhaolaogen/setCurrentGroup/:id
+/api/zhaolaogen/groupName/:id
+/api/zhaolaogen/chooseGroup/:code
+/api/zhaolaogen/user/:code
+/api/auth/local
+```
+
+14.授权访问API列表
+管理员登录后，可以通过jwt授权使用以下接口：
+```
+/api/zhaolaogen/start
+/api/zhaolaogen/editGroup/:id
+/api/zhaolaogen/setCurrentGroup/:id
+/graphql
+```
 
 
 1.In a terminal, run the following command:
