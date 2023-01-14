@@ -68,7 +68,18 @@ let xiv = CryptoJS.enc.Utf8.parse('XXXXXXXXXXXXXXXXXXXXXX')
 const wxappid = "XXXXXXXXXXXXXXXXXXXXXX"//
 const wxsecret = "XXXXXXXXXXXXXXXXXXXXXX"//
 ```
-### 5、运行环境需求
+
+### 5、阿里云短信接口密钥
+提前在阿里云申请好短信接口，模板如：`您好管理员，您管理的${name}已满员，请及时维护！`
+
+```
+//阿里云短信接口密钥
+const aliAccessKeyId = 'XXXXXXXXXXXXXXXXXXXXXX'
+const aliAccessKeySecret = 'XXXXXXXXXXXXXXXXXXXXXX'
+const aliTemplateCode = 'SMS_XXXXXXXX'
+```
+
+### 6、运行环境需求
 
 提前建好空的mysql，配置时填写账号密码等，需要提前准备好：
 - Ubuntu 20.04 LTS (GNU/Linux)
@@ -145,7 +156,8 @@ module.exports = ({ env }) => ({
 });
 
 ```
-
+9.将此开源项目的/api目录复制到你的服务器，与应用的src/api目录合并
+10.修改
 
 
 1.In a terminal, run the following command:
