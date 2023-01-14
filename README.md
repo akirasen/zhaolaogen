@@ -1,7 +1,7 @@
 # 找老根-微信社群运营管理工具
 
 > 使用uniapp+koa2+graphql打造的微信社群运营管理工具
-![image](https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/e4789e7b-d843-4a0d-9369-3bd9d39e2dd1.jpg = 300x)
+<img src="https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/e4789e7b-d843-4a0d-9369-3bd9d39e2dd1.jpg" alt="实际应用" width="250"/>
 > [开源地址](http://github.com/akirasen/zhaolaogen)  
 > 寻求帮助：微信公众号“造件师”
 > 设计思路：利用春节各大平台都在送福利让用户薅羊毛的热度，沉淀一批用户微信群，为之后的社群运营工作奠定流量基础，
@@ -23,9 +23,9 @@
 ## 安装前准备
 ### 1、设计素材和运行参数准备
 - 以下参数都可以动态设置，同时需要提前准备载入动画、页面顶部图、底部图元素和中部可以Y轴复制的背景图片、随机群头像等界面资源
-![image](https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/b136e509-eee3-4fac-9fd0-f02c005023b9.jpg = 300x)
+<img src="https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/b136e509-eee3-4fac-9fd0-f02c005023b9.jpg" alt="参数" width="250"/>
 - 通用分享海报和动态生成海报的底图
-![image](https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/3a005910-7ad2-4ca7-a01c-51ada5fd8a5f.jpg = 300x)
+<img src="https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/3a005910-7ad2-4ca7-a01c-51ada5fd8a5f.jpg" alt="底图" width="250"/>
 ### 2、平台OAuth2.0秘钥
 城市门户平台，例如德阳市民通的OAuth2.0秘钥、业务域名，计算用户生肖、出生地、称呼、发送短信需要用户的身份信息和联系方式，需要平台提供前述能力，根据实际接口情况进行二次开发。
 ```
