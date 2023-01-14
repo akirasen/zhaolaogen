@@ -167,49 +167,49 @@ module.exports = ({ env }) => ({
 10.Modify the parameters in the src/api/zhaolaogenuser/services/zhaolaogenuser.js file:
 
 ```
-let client_id = `XXXXXXXXXX`//配置client_id 
-let client_secret = `XXXXXXXXXX`//配置client_secret
-let redirect_uri = `https://XXXXXXXXXX.XXXXXXXXXX.cn`//配置redirect_uri
-//传入的用于敏感数据加密的秘钥
+let client_id = `XXXXXXXXXX`//client_id 
+let client_secret = `XXXXXXXXXX`//client_secret
+let redirect_uri = `https://XXXXXXXXXX.XXXXXXXXXX.cn`//redirect_uri
+//Incoming secret key for sensitive data encryption
 let vkey = CryptoJS.enc.Utf8.parse('XXXXXXXXXX')
-//传入的用于敏感数据加密的秘钥偏移量
+//Incoming key offset for sensitive data encryption
 let viv = CryptoJS.enc.Utf8.parse('XXXXXXXXXX')
-//传入的用于非敏感数据加密的秘钥
+//Incoming secret key for encryption of non-sensitive data
 let xkey = CryptoJS.enc.Utf8.parse('XXXXXXXXXX')
-//传入的用于非敏感数据加密的秘钥偏移量
+//The passed-in key offset for encryption of non-sensitive data
 let xiv = CryptoJS.enc.Utf8.parse('XXXXXXXXXX')
-//公众号key
+//Official account key
 const wxappid = "XXXXXXXXXX"
 const wxsecret = "XXXXXXXXXX"
-//阿里云短信接口密钥
+//AliCloud SMS key
 const aliAccessKeyId = 'XXXXXXXXXX'
 const aliAccessKeySecret = 'XXXXXXXXXX'
 const aliTemplateCode = 'XXXXXXXXXX'
 ```
 
-11.后端参数配置完成，重新bulid，然后启动开发环境：
+11. After the backend parameters are configured, rebuild and start the development environment:
 
 ```
 yarn build
 yarn develop
 ```
 
-12.要使用域名访问API，还需要完成以下工作
+12.To use the domain name to access the API, you need to complete the following work
 
-- 修改nginx配置文件，使用反向代理监听应用程序端口；
+- Modify the nginx configuration file and use the reverse proxy to listen to the application port;
 
-- 若要在微信小程序中正常使用，需要使用SSL，并进行绑定业务域名等一系列配置
+- If you want to use it in WeChat mini program, you need to use SSL and bind a series of configurations such as business domain name
 
-13.登录strapi管理面板，进行参数设定
+13. Log in to the stratpi management panel and set parameters
 
-- 通过https://yourdomain.com/admin 可以登录
+- Pass https://yourdomain.com/admin Can log in
+- For initial login, you need to register the management account
+- After logging in, select zhaolaogensetting in content-manager to set the application running parameters.
 
-- 初次登录，需要注册管理面板账号
+14. Configure API access rights
 
-- 登录后，在content-manager中，选中zhaolaogensetting，设置应用运行参数。
+In `settings/users permissions/roles`, select Public to configure public API access permissions. In the`Permissions` list, select`zhaolaogenuser`, check the following APIs and save:
 
-14.配置API访问权限
-在`settings/users-permissions/roles`中，选择Public配置公共API访问权限，在`Permissions`列表中，选择`zhaolaogenuser`，勾选以下API并保存：
 ```
 chooseGroup
 getGroupName 
@@ -219,16 +219,18 @@ userInfoStore
 warningAdmin
 ```
 
-选择`users-permissions`，勾选`callback`并保存，其它所有未提到的API均取消勾选，保存。
+Select `users permissions`, check`callback`and save. All other APIs not mentioned are unchecked and saved.
 
-在`content-manager`中，选中`user`，点击`Edit the model`按钮，点击`Add another field`按钮，创建名为`name`的`Text`类型字段，再创建名为`LastWarningTime`的`datetime`类型`Date`字段，名为`phone`的`Text`类型字段，以及名为`qrcode`的`Text`类型字段，保存。
+In `content manager`, select `user`, click the `Edit the model` button, click the `Add another field`button, create a `Text`type field named `name`, and then create a `datetime` type `Date` field named `LastWarningTime`, a `Text`type field named`phone`, and a `Text`type field named`qrcode`, and save it.
 
-在`settings/users-permissions/roles`中，点击`Add new role`按钮，新建名为`zlgOper`的角色，在`Permissions`列表中，选择`zhaolaogenuser`，勾选除`delete`以外的所有API并保存，选择`users-permissions`，勾选`me`并保存，其它所有未提到的API均取消勾选，保存。
+In `settings/users permissions/roles`, click the`Add new role`button to create a new role named`zlgOper`. In the`Permissions`list, select`zhaolaogenuser`, check all APIs except `delete` and save, select `users permissions`, check `me` and save, and uncheck all other APIs not mentioned and save.
 
-在`content-manager`中，选中`user`，点击`Create an entry`按钮，填入管理员登录信息。其中`confirmed`选择`true`，`role`选择为`zlgOper`，qrcode填写管理员的微信二维码链接地址。
+In `content manager`, select`user`, click the `Create an entry` button, and fill in the administrator login information. Where `confirmed` selects `true `,`role` selects `zlgOper`, and qrcode fills in the administrator's WeChat QR code link address.
 
-15.公共API列表
-配置成功后，用户可以在未登录授权的情况下可以POST正常使用以下API，使用koa2-ratelimit设置了每分钟5次的访问限制，提高恶意攻击的成本：
+15. List of public APIs
+
+After the configuration is successful, users can use the following APIs through POST without login authorization, and use koa2-ratelimit to set the access limit of 5 times per minute to increase the cost of malicious attacks:
+
 ```
 /api/zhaolaogen/info
 /api/zhaolaogen/warning/:id
@@ -242,52 +244,54 @@ warningAdmin
 /api/auth/local
 ```
 
-16.授权访问API列表
-管理员登录后，可以通过jwt授权使用以下接口：
+16. List of authorized access APIs
+
+After logging in, the administrator can use the following interfaces through jwt authorization:
+
 ```
 /api/zhaolaogen/start
 /api/zhaolaogen/editGroup/:id
 /api/zhaolaogen/setCurrentGroup/:id
 /graphql
 ```
-### 在HBuilder X或其它IDE中操作
+###Operate in HBuilder X or other IDE
 
-1.将代码同步到本地
+1. Clone the code locally
 
 ```
 git clone https://github.com/akirasen/zhaolaogen.git
 ```
 
-2.在终端中项目根目录安装依赖
+2. Install dependencies in the root directory of the project in the terminal
 
 ```
 npm i
 ```
 
-3.在`util/api.js`中配置
+3. Configure in 'util/api. js'
 ```
-//API域名
+//API domain name
 const BASE_URL = 'https://yourdomain.com'
-//传入的用于非敏感数据加密的秘钥，与后端配置一致
+//The incoming secret key used for encryption of non-sensitive data is consistent with the back-end configuration
 let xkey = CryptoJS.enc.Utf8.parse('XXXXXXXXXX')
-//传入的非敏感数据加密的秘钥偏移量，与后端配置一致
+//The key offset of the incoming non-sensitive data encryption is consistent with the backend configuration
 let xiv = CryptoJS.enc.Utf8.parse('XXXXXXXXXX')
 ```
-4.在`pages/index/index.vue`中配置
+4. Configure in 'pages/index/index. vue'
 
 ```
-bgImg:{//页面元素
-   bgImg: "",//可复制中部背景
-   topImg: "",//顶部
-   bottomImg: "",//底部
+bgImg:{//Page Elements
+   bgImg: "",//Replicatable middle background,Picture link address
+   topImg: "",//Picture link address
+   bottomImg: "",//Picture link address
 },
-post:[//载入进度，可以填多个就是随机显示
+post:[/Load animation. You can fill in more than one random display
   {
-   postImg: "",//封面
-   video: "",//视频地址
-   duration:12//视频长度（秒）用于倒计时
+   postImg: "",//cover,Picture link address
+   video: "",//Video address
+   duration:12//Video length (seconds) for countdown
   },
 ],
 ```
-这里也提供了一个开发模式，可以将developMode设为true，在内置浏览器打开时，就会加载userinfo1、eventSetting2中的数据（需要自己配置），而不会从接口调用。
+A development mode is also provided here. You can set the developMode to true. When the built-in browser is opened, the data in userinfo1 and eventSetting2 will be loaded (you need to configure it yourself) instead of being called from the interface.
 
