@@ -99,6 +99,53 @@ Custom (manual settings), which allows to choose your preferred database
 ```
 yarn develop
 ```
+5.此时，一个strapi应用开发环境将自动编译部署，并运行在1337端口上，若希望其运行在其他端口，可在应用根目录.env文件中修改PORT参数，以及在config/server.js修改port参数；
+
+6.暂时Ctrl+C退出环境，安装依赖，在根目录分别执行：
+```
+npm i axios --save
+npm i moment --save
+npm i crypto-js --save
+npm i koa2-ratelimit --save
+```
+7.创建config/cron-tasks.js文件：
+```
+const axios = require('axios');
+const moment = require("moment");
+const CryptoJS = require('crypto-js'); 
+
+module.exports = {
+   '0 0 18 * * *': async ({ strapi }) => {
+        console.log("每天18:00进行群排名::",await strapi.service('api::zhaolaogenuser.zhaolaogenuser').checkGroupRank())
+    },
+    '0 0 * * * *': async ({ strapi }) => {
+        console.log("每小时刷新一次AccessToken::", await strapi.service('api::zhaolaogenuser.zhaolaogenuser').getAccessToken())
+   },
+   '0 10,30,50 * * * *': async ({ strapi }) => {
+        console.log("每20分钟刷新一次群排名::",await strapi.service('api::zhaolaogenuser.zhaolaogenuser').refreshGroupRank())
+   }
+}
+```
+
+8.config/server.js还需要进行以下设定，添加cron服务及绑定域名：
+
+```
+const cronTasks = require("./cron-tasks");
+module.exports = ({ env }) => ({
+  host: env('HOST', '0.0.0.0'),
+  port: env.int('PORT', 1337),
+  url: env('PUBLIC_URL', 'https://yourdomain.com'),
+  app: {
+    keys: env.array('APP_KEYS'),
+  },
+  cron: {
+    enabled: true,
+    tasks: cronTasks,
+  },
+});
+
+```
+
 
 
 1.In a terminal, run the following command:
