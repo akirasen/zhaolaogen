@@ -805,19 +805,17 @@
 		onPullDownRefresh() {
 			setTimeout(()=>{//0.5秒延迟
 				uni.stopPullDownRefresh()
-				// this.getNoteGraphql(()=>{//在下拉刷新getIndexGraphql()时使用此回调函数
-				// 	uni.stopPullDownRefresh()//关闭下拉刷新
-				// })
+				
 			},500)
 		
 		},
 		methods: {
 			onCountdownChange(e){				
 				this.countdown = e.seconds
-				console.log(this.countdown)
+				
 			},
 			async subsectionChange(index){
-				console.log(this.listKey[index])
+				
 				this.currentRank = index;
 				if(index == 0){
 					this.groupList = JSON.parse(JSON.stringify(this.eventSetting.groupInCircle))
@@ -1037,7 +1035,7 @@
 					url:'zhaolaogen/groupName/'+groupID
 				
 				})
-				console.log(res)
+				
 				if(res.data.succeed){
 					this.sending = false
 					this.groupName = res.data.weChatGroupName
@@ -1074,7 +1072,7 @@
 				
 			},
 			videoEnd(){
-				console.log('Video end')
+				
 				this.showVideo = false
 				this.showCountDown = false
 			},
