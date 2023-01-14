@@ -96,28 +96,28 @@ Create an MySQL database in advance and fill in the account password when config
 
 ### Operate on the server side
 
-1.Terminal operation,change `Your project name` to the name of the directory you want to create
+1.In a terminal, run the following command,change `Your project name` to the name of the directory you want to create
 
 ```
 yarn create strapi-app your-project-name
 ```
 
-2.Select`Custom`mode for installation.` Quickstart` will use SQLite database by default
+2.Choose `Custom` installation type.` Quickstart` will use SQLite database by default
 a
 ```
 Custom (manual settings), which allows to choose your preferred database
 ```
 
-3.Select MySQL database in the list and fill in the database information
+3.Among the list of databases, Select MySQL database in the list and fill in the database information
 
-4.Run the strapi development environment in the project root directory
+4.Run the following command in the project folder
 
 ```
 yarn develop
 ```
 5.At this time, a stratpi application development environment will automatically compile and deploy and run on port 1337. If you want it to run on other ports, you can modify the PORT parameter in the. env file of the application root directory, and modify the port parameter in config/server.js;
 
-6.暂时Ctrl+C退出环境，安装依赖，在根目录分别执行：
+6.Press Ctrl+C to exit cli temporarily, install dependencies, and execute them in the root directory respectively:
 ```
 npm i axios --save
 npm i moment --save
@@ -125,7 +125,7 @@ npm i crypto-js --save
 npm i koa2-ratelimit --save
 yarn strapi install graphql
 ```
-7.创建config/cron-tasks.js文件：
+7.Create the config/cron-tasks.js file:
 ```
 const axios = require('axios');
 const moment = require("moment");
@@ -133,18 +133,18 @@ const CryptoJS = require('crypto-js');
 
 module.exports = {
    '0 0 18 * * *': async ({ strapi }) => {
-        console.log("每天18:00进行群排名::",await strapi.service('api::zhaolaogenuser.zhaolaogenuser').checkGroupRank())
+        console.log("Group ranking at 18:00 every day::",await strapi.service('api::zhaolaogenuser.zhaolaogenuser').checkGroupRank())
     },
     '0 0 * * * *': async ({ strapi }) => {
-        console.log("每小时刷新一次AccessToken::", await strapi.service('api::zhaolaogenuser.zhaolaogenuser').getAccessToken())
+        console.log("Refresh AccessToken every hour::", await strapi.service('api::zhaolaogenuser.zhaolaogenuser').getAccessToken())
    },
    '0 10,30,50 * * * *': async ({ strapi }) => {
-        console.log("每20分钟刷新一次群排名::",await strapi.service('api::zhaolaogenuser.zhaolaogenuser').refreshGroupRank())
+        console.log("Refresh group ranking every 20 minutes::",await strapi.service('api::zhaolaogenuser.zhaolaogenuser').refreshGroupRank())
    }
 }
 ```
 
-8.config/server.js还需要进行以下设定，添加cron服务及绑定域名：
+8.Config/server.js also needs to make the following settings, add the cron service and bind the domain name:
 
 ```
 const cronTasks = require("./cron-tasks");
@@ -162,9 +162,9 @@ module.exports = ({ env }) => ({
 });
 
 ```
-9.将此开源项目的/api目录复制到你的服务器，与应用的src/api目录合并
+9.Copy the/api directory of this open source project to your server and merge it with the src/api directory of the application
 
-10.修改src/api/zhaolaogenuser/services/zhaolaogenuser.js文件中的参数：
+10.Modify the parameters in the src/api/zhaolaogenuser/services/zhaolaogenuser.js file:
 
 ```
 let client_id = `XXXXXXXXXX`//配置client_id 
