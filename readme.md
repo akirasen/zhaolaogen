@@ -1,14 +1,14 @@
-# 找老根-微信社群运营管理工具
+# Zhaolaogen - A weChat Community Operation Management Application
 
-> 使用uniapp+koa2+graphql打造的微信社群运营管理工具
+> build on uniapp+koa2+graphql
 
 <img src="https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/e4789e7b-d843-4a0d-9369-3bd9d39e2dd1.jpg" alt="实际应用" width="250"/>
 
-> [开源地址](http://github.com/akirasen/zhaolaogen)  
+> [Open source address](http://github.com/akirasen/zhaolaogen)  
 
-> 寻求帮助：微信公众号“造件师”
+> Ask for help: WeChat official account “造件师”
 
-> 设计思路：利用春节各大平台都在送福利让用户薅羊毛的热度，沉淀一批用户微信群，为之后的社群运营工作奠定流量基础，为此，准备了一批方便线上领取的礼品，让用户加入微信群，管理员定时发红包，手气最佳获得额外礼品。
+> Design idea: during the Spring Festival, various well-known platforms are giving benefits to users, developing a group of users' WeChat groups, and laying a foundation for the number of users for our future community operation, for this reason, we have prepared a batch of gifts that are convenient to collect online. When users join the WeChat group, the administrator will issue red envelopes regularly, and the users with the best luck can get additional gifts.
 > 
 > 而微信群能够扫码加入的人数有限，一个群加满以后需要动态更换新的空群二维码，而且扫码加群的人数到达上线后，需要有机制鼓励群成员邀请其它朋友入群。此应用便是为此而生。
 
@@ -250,7 +250,7 @@ warningAdmin
 1.将代码同步到本地
 
 ```
-
+git clone https://github.com/akirasen/zhaolaogen.git
 ```
 
 2.在终端中项目根目录安装依赖
