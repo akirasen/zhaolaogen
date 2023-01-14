@@ -603,7 +603,7 @@
 						},
 						data:this.currentGroupDetail
 					})
-					console.log(res)
+					
 					if(res.data.succeed){
 						this.sending = false
 						uni.showToast({
@@ -658,7 +658,7 @@
 				this.ShowNewGroup = false
 				this.confimNew = false
 				this.currentGroupDetail = this.groupList[iindex].attributes
-				console.log('currentGroupDetail::',this.currentGroupDetail)
+			
 				this.refresh = false
 				this.refresh = true
 			},
@@ -729,7 +729,7 @@
 									);
 								}
 							});
-						console.log('成功上传',_this.currentGroupDetail,imgUpload.fileID)
+						
 						_this.currentGroupDetail[path] = imgUpload.fileID
 					}
 				});
@@ -740,7 +740,7 @@
 				this.currentGroupDetail.groupAvator = ""
 			},
 			async sendConfimed(gid){
-				console.log("gid::",gid)
+				
 				this.sending = true
 				const res = await this.$comRequest({
 					Method:'POST',
@@ -750,7 +750,7 @@
 						'Authorization': 'Bearer '+uni.getStorageSync('jwt')
 					},
 				})
-				console.log(res)
+				
 				if(res.data.succeed){
 					this.sending = false
 					uni.showToast({
@@ -847,7 +847,7 @@
 				}
 			},
 			subsectionChange(index){
-				console.log(this.listKey[index])
+				
 				this.current = index;
 				if(index == 1){
 					this.groupList = []
@@ -949,7 +949,7 @@
 					}
 				`
 				const res = await this.$graphqlRequest({
-					url:'gql',
+					url:'graphql',
 					query: query,
 					method:'POST',
 					header:{
@@ -957,16 +957,16 @@
 						'Authorization': 'Bearer '+uni.getStorageSync('jwt')
 					},
 				})		
-				console.log('res',res)
+		
 				this.eventSetting = res.data.data.zhaolaogensetting.data.attributes				
-				console.log('groups',this.groups)
+			
 				this.eventSetting.post.forEach((item,index)=>{
 					this.eventSetting.post[index].videoShow = false
 				})
 				this.groups.forEach((item,index)=>{
 					this.groups[index].qrShow = false
 				})
-				console.log('eventSetting',this.eventSetting)
+				
 				if(res.data.data.me.role.id == "3"){
 					this.superAdmin = true
 					console.log('superAdmin',this.superAdmin)
@@ -1014,7 +1014,7 @@
 					}
 				`
 				const res = await this.$graphqlRequest({
-					url:'gql',
+					url:'graphql',
 					query: query,
 					method:'POST',
 					header:{
