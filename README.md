@@ -118,6 +118,7 @@ npm i axios --save
 npm i moment --save
 npm i crypto-js --save
 npm i koa2-ratelimit --save
+npm i @alicloud/pop-core --save
 yarn strapi install graphql
 ```
 7.创建config/cron-tasks.js文件：
