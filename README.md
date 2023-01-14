@@ -23,10 +23,15 @@
 |     √      |     √     |     √    |      √      |
 
 ## 安装前准备
+
 ### 1、设计素材和运行参数准备
+
 以下参数都可以动态设置，同时需要提前准备载入动画、页面顶部图、底部图元素和中部可以Y轴复制的背景图片、随机群头像等界面资源
+
 <img src="https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/b136e509-eee3-4fac-9fd0-f02c005023b9.jpg" alt="参数" width="250"/>
+
 通用分享海报和动态生成海报的底图
+
 <img src="https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/3a005910-7ad2-4ca7-a01c-51ada5fd8a5f.jpg" alt="底图" width="250"/>
 
 ### 2、平台OAuth2.0秘钥
@@ -64,6 +69,7 @@ const wxappid = "XXXXXXXXXXXXXXXXXXXXXX"//
 const wxsecret = "XXXXXXXXXXXXXXXXXXXXXX"//
 ```
 ### 5、运行环境需求
+
 提前建好空的mysql，配置时填写账号密码等，需要提前准备好：
 - Ubuntu 20.04 LTS (GNU/Linux)
 - Node.js v18
@@ -71,18 +77,25 @@ const wxsecret = "XXXXXXXXXXXXXXXXXXXXXX"//
 - MySQL	5.7+
 
 ## 后端安装
+
 ### 在服务器终端中操作
+
 1.`your-project-name`改为你准备新建的目录名
+
 ```
 yarn create strapi-app your-project-name
 ```
+
 2.选择`Custom`模式安装，Quickstart会默认使用SQLite数据库
 
 ```
 Custom (manual settings), which allows to choose your preferred database
 ```
+
 3.在列表中选择MySQL数据库，并填写数据库信息
+
 4.在项目根目录运行strapi开发环境
+
 ```
 yarn develop
 ```
