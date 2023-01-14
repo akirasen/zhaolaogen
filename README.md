@@ -22,19 +22,25 @@
 
 ## 安装前准备
 ### 1、设计素材和运行参数准备
-- 以下参数都可以动态设置，同时需要提前准备载入动画、页面顶部图、底部图元素和中部可以Y轴复制的背景图片、随机群头像等界面资源
+以下参数都可以动态设置，同时需要提前准备载入动画、页面顶部图、底部图元素和中部可以Y轴复制的背景图片、随机群头像等界面资源
 <img src="https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/b136e509-eee3-4fac-9fd0-f02c005023b9.jpg" alt="参数" width="250"/>
-- 通用分享海报和动态生成海报的底图
+通用分享海报和动态生成海报的底图
 <img src="https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/3a005910-7ad2-4ca7-a01c-51ada5fd8a5f.jpg" alt="底图" width="250"/>
+
 ### 2、平台OAuth2.0秘钥
+
 城市门户平台，例如德阳市民通的OAuth2.0秘钥、业务域名，计算用户生肖、出生地、称呼、发送短信需要用户的身份信息和联系方式，需要平台提供前述能力，根据实际接口情况进行二次开发。
+
 ```
 let client_id = `XXXXXXXXXXXXXXXXXXXXXX`//配置client_id 
 let client_secret = `XXXXXXXXXXXXXXXXXXXXXX`//配置client_secret
 let redirect_uri = `https://yourdomain.com`//配置redirect_uri
 ```
+
 ### 3、数据加密用密钥对
+
 四组16位随机秘钥，用于数据的AES加密，替换下面的`XXXXXX`，例如`L7URlOJxXXNobOYE`的形式，其中后端用加密秘钥用于在数据库中加密存储用户手机号等敏感数据，前端秘钥用于低敏感度的昵称、头像加密，在前端解密，实现密钥和数据库分离。
+
 ```
 //后端用加密秘钥 
 let vkey = CryptoJS.enc.Utf8.parse('XXXXXXXXXXXXXXXXXXXXXX')
@@ -45,8 +51,11 @@ let xkey = CryptoJS.enc.Utf8.parse('XXXXXXXXXXXXXXXXXXXXXX')
 //前端用加密的秘钥偏移量
 let xiv = CryptoJS.enc.Utf8.parse('XXXXXXXXXXXXXXXXXXXXXX')
 ```
+
 ### 4、微信公众号密钥对
+
 微信网页中调用JSSDK唤起小程序、分享能力用的公众号秘钥对，需要已认证的国内公众号生成。
+
 ```
 // 公众号key
 const wxappid = "XXXXXXXXXXXXXXXXXXXXXX"//
