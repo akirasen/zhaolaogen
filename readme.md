@@ -18,13 +18,13 @@
 
 > Users who join the group can also vote to modify the group name, modify the group avatar in the ranking list, so that users who join the same group can "do something together", promote the cohesion and activity of the community, and strive to become gossip groups, explosive groups, mutual aid groups after the event is over...
 
-> 在此也特别感谢Strapi社区的[Richard Nsama](https://github.com/kasonde)，在我学习Koa的过程中提供很大帮助。
+> I would also like to thank [Richard Nsama](https://github.com/kasonde) of the Strapi community for his great help in my study of KOA.
 
-## 平台兼容
+## Platform compatibility
 
-| H5野生浏览器 | 微信小程序 | 微信浏览器 | 德阳市民通App |
-| ---------- | --------- | -------- | ----------- |
-|     √      |     √     |     √    |      √      |
+| H5 WildBrowser | WeChat miniProgram | WeChatbrowser | Deyang Citizenid App |
+| -------------- | ------------------ | ------------- | -------------------- |
+|        √       |          √         |        √      |          √           |
 
 ## 安装前准备
 
