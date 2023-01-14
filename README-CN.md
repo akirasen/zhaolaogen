@@ -103,7 +103,7 @@ yarn create strapi-app your-project-name
 Custom (manual settings), which allows to choose your preferred database
 ```
 
-3.在列表中选择MySQL数据库，并填写数据库信息
+3.在列表中选择MySQL数据库，并填写数据库信息，安装
 
 4.在项目根目录运行strapi开发环境
 
