@@ -26,95 +26,96 @@
 | -------------- | ------------------ | ------------- | -------------------- |
 |        √       |          √         |        √      |          √           |
 
-## 安装前准备
+## Preparation before installation
 
-### 1、设计素材和运行参数准备
+### 1. Preparation of design materials and operation parameters
 
-以下参数都可以动态设置，同时需要提前准备载入动画、页面顶部图、底部图元素和中部可以Y轴复制的背景图片、随机群头像等界面资源
+The following parameters can be set dynamically. At the same time, it is necessary to prepare and load the animation, the top and bottom image elements of the page, the background image that can be copied on the Y axis in the middle, the random group head image and other interface resources in advance
 
-<img src="https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/b136e509-eee3-4fac-9fd0-f02c005023b9.jpg" alt="参数" width="250"/>
+<img src="https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/b136e509-eee3-4fac-9fd0-f02c005023b9.jpg" alt="parameters" width="250"/>
 
-通用分享海报（最上面那张）和动态生成海报的底图
+Common shared poster (the top one) and background image of dynamically generated poster
 
-<img src="https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/3a005910-7ad2-4ca7-a01c-51ada5fd8a5f.jpg" alt="底图" width="250"/>
+<img src="https://mp-d84f1f76-0293-41b6-a6a1-499dd4e5fc0c.cdn.bspapp.com/cloudstorage/3a005910-7ad2-4ca7-a01c-51ada5fd8a5f.jpg" alt="BG" width="250"/>
 
-### 2、平台OAuth2.0秘钥
+### Platform OAuth2.0 secret key
 
-城市门户平台，例如德阳市民通的OAuth2.0秘钥、业务域名，计算用户生肖、出生地、称呼、发送短信需要用户的身份信息和联系方式，需要平台提供前述能力，根据实际接口情况进行二次开发。
-
-```
-let client_id = `XXXXXXXXXXXXXXXXXXXXXX`//配置client_id 
-let client_secret = `XXXXXXXXXXXXXXXXXXXXXX`//配置client_secret
-let redirect_uri = `https://yourdomain.com`//配置redirect_uri
-```
-
-### 3、数据加密用密钥对
-
-两对16位随机秘钥，用于数据的AES加密，替换下面的`XXXXXX`，例如`L7URlOJxXXNobOYE`的形式，其中后端用加密秘钥用于在数据库中加密存储用户手机号等敏感数据，前端秘钥用于低敏感度的昵称、头像加密，在前端解密，实现密钥和数据库分离。
+The city portal platform, such as the OAuth2.0 secret key and business domain name of Deyang Citizen Communication, requires the user's identity information and contact information to calculate the user's zodiac, birthplace, address, and send text messages. The platform needs to provide the aforementioned capabilities, and carry out secondary development according to the actual interface situation.
 
 ```
-//后端用加密秘钥 
+let client_id = `XXXXXXXXXXXXXXXXXXXXXX`//client_id 
+let client_secret = `XXXXXXXXXXXXXXXXXXXXXX`//client_secret
+let redirect_uri = `https://yourdomain.com`//redirect_uri
+```
+
+###3. Key pair for data encryption
+
+Two pairs of 16-bit random secret keys are used for AES encryption of data, replacing the following 'XXXXXX', for example, the form of 'L7URlOJxXXNobOYE'. The back-end uses the encryption key to encrypt and store the user's mobile phone number and other sensitive data in the database, and the front-end key is used for low-sensitivity nickname and head image encryption. The front-end decryption is used to separate the key and the database.
+
+```
+//Back-end encryption key
 let vkey = CryptoJS.enc.Utf8.parse('XXXXXXXXXXXXXXXXXXXXXX')
-//后端用加密的秘钥偏移量
+//Back-end encrypted secret key offset
 let viv = CryptoJS.enc.Utf8.parse('XXXXXXXXXXXXXXXXXXXXXX')
-//前端用加密的秘钥
+//Front-end encryption key
 let xkey = CryptoJS.enc.Utf8.parse('XXXXXXXXXXXXXXXXXXXXXX')
-//前端用加密的秘钥偏移量
+//The offset of the secret key encrypted by the front end
 let xiv = CryptoJS.enc.Utf8.parse('XXXXXXXXXXXXXXXXXXXXXX')
 ```
 
-### 4、微信公众号密钥对
+### 4. WeChat official account key pair
 
-微信网页中调用JSSDK唤起小程序、分享能力用的公众号秘钥对，需要已认证的国内公众号生成。
+The secret key pair of official account for calling JSSDK in WeChat web pages to invoke applets and share capabilities needs to be generated from the certified domestic official account.
 
 ```
-// 公众号key
+// WeChat official account key
 const wxappid = "XXXXXXXXXXXXXXXXXXXXXX"//
 const wxsecret = "XXXXXXXXXXXXXXXXXXXXXX"//
 ```
 
-### 5、阿里云短信接口密钥
-提前在阿里云申请好短信接口，模板如：`您好管理员，您管理的${name}已满员，请及时维护！`
+### 5. AliCloud SMS key
+Apply for the SMS key in AliCloud in advance. The template is as follows: ` Hello administrator, the ${name} you manage is full, please maintain it in time`
 
 ```
-//阿里云短信接口密钥
+//AliCloud SMS key
 const aliAccessKeyId = 'XXXXXXXXXXXXXXXXXXXXXX'
 const aliAccessKeySecret = 'XXXXXXXXXXXXXXXXXXXXXX'
 const aliTemplateCode = 'SMS_XXXXXXXX'
 ```
 
-### 6、运行环境需求
+### 6. Operating environment requirements
 
-提前建好空的mysql，配置时填写账号密码等，需要提前准备好：
+Create an MySQL database in advance and fill in the account password when configuring. You need to prepare in advance:
+
 - Ubuntu 20.04 LTS (GNU/Linux)
 - Node.js v18
 - yarn
 - MySQL	5.7+
 
-## 部署和二次开发指南
+## Deployment and secondary development guide
 
-### 在服务器端操作
+### Operate on the server side
 
-1.终端操作，`your-project-name`改为你准备新建的目录名
+1.Terminal operation,change `Your project name` to the name of the directory you want to create
 
 ```
 yarn create strapi-app your-project-name
 ```
 
-2.选择`Custom`模式安装，Quickstart会默认使用SQLite数据库
-
+2.Select`Custom`mode for installation.` Quickstart` will use SQLite database by default
+a
 ```
 Custom (manual settings), which allows to choose your preferred database
 ```
 
-3.在列表中选择MySQL数据库，并填写数据库信息
+3.Select MySQL database in the list and fill in the database information
 
-4.在项目根目录运行strapi开发环境
+4.Run the strapi development environment in the project root directory
 
 ```
 yarn develop
 ```
-5.此时，一个strapi应用开发环境将自动编译部署，并运行在1337端口上，若希望其运行在其他端口，可在应用根目录.env文件中修改PORT参数，以及在config/server.js修改port参数；
+5.At this time, a stratpi application development environment will automatically compile and deploy and run on port 1337. If you want it to run on other ports, you can modify the PORT parameter in the. env file of the application root directory, and modify the port parameter in config/server.js;
 
 6.暂时Ctrl+C退出环境，安装依赖，在根目录分别执行：
 ```
