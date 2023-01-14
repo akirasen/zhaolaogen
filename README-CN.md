@@ -251,7 +251,7 @@ warningAdmin
 1.将代码同步到本地
 
 ```
-
+git clone https://github.com/akirasen/zhaolaogen.git
 ```
 
 2.在终端中项目根目录安装依赖
