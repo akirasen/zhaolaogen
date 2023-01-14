@@ -258,8 +258,19 @@ warningAdmin
 ```
 npm i
 ```
-
-3.在`util/api.js`中配置
+3.安装以下插件
+```
+lime-painter https://ext.dcloud.net.cn/plugin?id=2389
+uView UI https://ext.dcloud.net.cn/plugin?id=1593
+以及
+uni-config-center
+uni-dateformat
+uni-easyinput
+uni-icons
+uni-id-common
+uni-scss
+```
+4.在`util/api.js`中配置
 ```
 //API域名
 const BASE_URL = 'https://yourdomain.com'
@@ -268,7 +279,7 @@ let xkey = CryptoJS.enc.Utf8.parse('XXXXXXXXXX')
 //传入的非敏感数据加密的秘钥偏移量，与后端配置一致
 let xiv = CryptoJS.enc.Utf8.parse('XXXXXXXXXX')
 ```
-4.在`pages/index/index.vue`中配置
+5.在`pages/index/index.vue`中配置
 
 ```
 bgImg:{//页面元素
