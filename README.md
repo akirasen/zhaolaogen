@@ -190,8 +190,35 @@ yarn develop
 ```
 
 12.要使用域名访问API，还需要完成以下工作
+
 - 修改nginx配置文件，使用反向代理监听应用程序端口；
+
 - 若要在微信小程序中正常使用，需要使用SSL，并进行绑定业务域名等一系列配置
+
+13.登录strapi管理面板，进行参数设定
+
+- 通过https://yourdomain.com/admin 可以登录
+
+- 初次登录，需要注册管理面板账号
+
+- 登录后，在content-manager中，选中zhaolaogensetting，设置应用运行参数。
+
+14.配置API访问权限
+在settings/users-permissions/roles中，选择Public配置公共API访问权限，在Permissions列表中，选择zhaolaogenuser，勾选以下API并保存：
+```
+chooseGroup
+getGroupName 
+getTicket 
+getZlgInfo 
+userInfoStore 
+warningAdmin
+```
+
+选择`users-permissions`，勾选`callback`并保存，其它所有未提到的API均取消勾选
+
+在`content-manager`中，选中`user`，点击`Edit the model`按钮，点击`Add another field`按钮，创建名为`name`的`Text`类型字段，再创建名为`LastWarningTime`的`datetime`类型`Date`字段，名为`phone`的`Text`类型字段，以及名为`qrcode`的`Text`类型字段，保存。
+在`content-manager`中，选中`user`，点击`Create an entry`按钮，填入管理员登录信息。
+
 
 13.公共API列表
 配置成功后，用户可以在未登录授权的情况下可以POST正常使用以下API，使用koa2-ratelimit设置了每分钟5次的访问限制，提高恶意攻击的成本：
