@@ -87,7 +87,7 @@ const aliTemplateCode = 'SMS_XXXXXXXX'
 - yarn
 - MySQL	5.7+
 
-## 二次开发指南
+## 部署和二次开发指南
 
 ### 在服务器端操作
 
@@ -245,6 +245,47 @@ warningAdmin
 /api/zhaolaogen/setCurrentGroup/:id
 /graphql
 ```
+### 在HBuilder X或其它IDE中操作
+
+1.将代码同步到本地
+
+```
+
+```
+
+2.在终端中项目根目录安装依赖
+
+```
+npm i
+```
+
+3.在`util/api.js`中配置
+```
+//API域名
+const BASE_URL = 'https://yourdomain.com'
+//传入的用于非敏感数据加密的秘钥，与后端配置一致
+let xkey = CryptoJS.enc.Utf8.parse('XXXXXXXXXX')
+//传入的非敏感数据加密的秘钥偏移量，与后端配置一致
+let xiv = CryptoJS.enc.Utf8.parse('XXXXXXXXXX')
+```
+4.在`pages/index/index.vue`中配置
+
+```
+bgImg:{//页面元素
+   bgImg: "",//可复制中部背景
+   topImg: "",//顶部
+   bottomImg: "",//底部
+},
+post:[//载入进度，可以填多个就是随机显示
+  {
+   postImg: "",//封面
+   video: "",//视频地址
+   duration:12//视频长度（秒）用于倒计时
+  },
+],
+```
+这里也提供了一个开发模式，可以将developMode设为true，在内置浏览器打开时，就会加载userinfo1、eventSetting2中的数据（需要自己配置），而不会从接口调用。
+
 
 
 1.In a terminal, run the following command:
