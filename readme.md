@@ -40,7 +40,7 @@ Common shared poster (the top one) and background image of dynamically generated
 
 ### Platform OAuth2.0 secret key
 
-The city portal platform, such as the OAuth2.0 secret key and business domain name of Deyang Citizen Communication, requires the user's identity information and contact information to calculate the user's zodiac, birthplace, address, and send text messages. The platform needs to provide the aforementioned capabilities, and carry out secondary development according to the actual interface situation.
+The city portal platform, such as the OAuth2.0 secret key and business domain name of Deyang Citizen ID, requires the user's identity information and contact information to calculate the user's zodiac, birthplace, address, and send text messages. The platform needs to provide the aforementioned capabilities, and carry out secondary development according to the actual interface situation.
 
 ```
 let client_id = `XXXXXXXXXXXXXXXXXXXXXX`//client_id 
